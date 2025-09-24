@@ -6,3 +6,6 @@
 # React Router
 /.react-router/
 /build/
+
+repoDetails.json
+markdownWithStars.md

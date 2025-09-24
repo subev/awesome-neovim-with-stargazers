@@ -17,9 +17,11 @@ export function Welcome({
 }) {
   const navigation = useNavigation();
 
+  console.log();
+
   return (
     <main className="flex items-center justify-center pt-16 pb-4">
-      <div className="flex-1 flex flex-col items-center gap-16 min-h-0">
+      <div className="flex min-h-0 flex-1 flex-col items-center gap-16">
         <header className="flex flex-col items-center gap-9">
           <h1 className="sr-only">{message}</h1>
           <div className="w-[500px] max-w-[100vw] p-4">
@@ -35,9 +37,9 @@ export function Welcome({
             />
           </div>
         </header>
-        <div className="max-w-[300px] w-full space-y-6 px-4">
-          <nav className="rounded-3xl border border-gray-200 p-6 dark:border-gray-700 space-y-4">
-            <p className="leading-6 text-gray-700 dark:text-gray-200 text-center">
+        <div className="w-full max-w-[300px] space-y-6 px-4">
+          <nav className="space-y-4 rounded-3xl border border-gray-200 p-6 dark:border-gray-700">
+            <p className="text-center leading-6 text-gray-700 dark:text-gray-200">
               What&apos;s next?
             </p>
             <ul>
@@ -56,10 +58,10 @@ export function Welcome({
               ))}
             </ul>
           </nav>
-          <section className="rounded-3xl border border-gray-200 p-6 dark:border-gray-700 space-y-4">
+          <section className="space-y-4 rounded-3xl border border-gray-200 p-6 dark:border-gray-700">
             <Form
               method="post"
-              className="space-y-4 w-full max-w-lg"
+              className="w-full max-w-lg space-y-4"
               onSubmit={(event) => {
                 if (navigation.state === "submitting") {
                   event.preventDefault();
@@ -74,19 +76,19 @@ export function Welcome({
                 name="name"
                 placeholder="Name"
                 required
-                className="w-full dark:bg-gray-800 dark:text-gray-200 dark:border-gray-700 dark:focus:ring-blue-500 h-10 px-3 rounded-lg border border-gray-200 focus:ring-1 focus:ring-blue-500"
+                className="h-10 w-full rounded-lg border border-gray-200 px-3 focus:ring-1 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:focus:ring-blue-500"
               />
               <input
                 name="email"
                 type="email"
                 placeholder="your@email.com"
                 required
-                className="w-full dark:bg-gray-800 dark:text-gray-200 dark:border-gray-700 dark:focus:ring-blue-500 h-10 px-3 rounded-lg border border-gray-200 focus:ring-1 focus:ring-blue-500"
+                className="h-10 w-full rounded-lg border border-gray-200 px-3 focus:ring-1 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:focus:ring-blue-500"
               />
               <button
                 type="submit"
                 disabled={navigation.state === "submitting"}
-                className="w-full h-10 px-3 text-white bg-blue-500 rounded-lg hover:bg-blue-600"
+                className="h-10 w-full rounded-lg bg-blue-500 px-3 text-white hover:bg-blue-600"
               >
                 Sign Guest Book
               </button>

@@ -8,7 +8,10 @@
     "db:migrate": "dotenv -- drizzle-kit migrate",
     "dev": "dotenv -- node server.js",
     "start": "node server.js",
-    "typecheck": "react-router typegen && tsc -b"
+    "typecheck": "react-router typegen && tsc -b",
+    "lint": "eslint . --ext .ts,.tsx",
+    "test": "vitest",
+    "fetch-stars": "node --experimental-strip-types --env-file=.env scripts/run-main.ts"
   },
   "dependencies": {
     "@react-router/express": "^7.7.1",
@@ -16,17 +19,27 @@
     "compression": "^1.8.0",
     "drizzle-orm": "~0.36.3",
     "express": "^5.1.0",
+    "got": "^14.4.9",
     "isbot": "^5.1.27",
     "morgan": "^1.10.0",
+    "p-queue": "^8.1.1",
     "postgres": "^3.4.5",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-router": "^7.7.1"
+    "react-markdown": "^10.1.0",
+    "react-router": "^7.7.1",
+    "rehype-autolink-headings": "^7.1.0",
+    "rehype-external-links": "^3.0.0",
+    "rehype-slug": "^6.0.0",
+    "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
+    "@eslint/js": "^9.36.0",
     "@react-router/dev": "^7.7.1",
-    "@tailwindcss/vite": "^4.1.4",
+    "@tailwindcss/typography": "^0.5.18",
+    "@tailwindcss/vite": "^4.1.13",
     "@types/compression": "^1.7.5",
+    "@types/eslint-plugin-tailwindcss": "^3.17.0",
     "@types/express": "^5.0.1",
     "@types/express-serve-static-core": "^5.0.6",
     "@types/morgan": "^1.9.9",
@@ -36,10 +49,19 @@
     "@types/react-dom": "^19.1.2",
     "dotenv-cli": "^8.0.0",
     "drizzle-kit": "~0.28.1",
-    "tailwindcss": "^4.1.4",
+    "eslint": "^9.35.0",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-tailwindcss": "^4.0.0-beta.0",
+    "globals": "^16.3.0",
+    "jiti": "^2.5.1",
+    "prettier": "^3.6.2",
+    "prettier-plugin-tailwindcss": "^0.6.14",
+    "tailwindcss": "^4.1.13",
     "tsx": "^4.19.2",
     "typescript": "^5.8.3",
+    "typescript-eslint": "^8.44.1",
     "vite": "^6.3.3",
-    "vite-tsconfig-paths": "^5.1.4"
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^3.2.4"
   }
 }

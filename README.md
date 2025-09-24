@@ -12,6 +12,8 @@ A modern, production-ready template for building full-stack React applications u
 - 🎉 TailwindCSS for styling
 - 💾 PostgreSQL + DrizzleORM
 - 📖 [React Router docs](https://reactrouter.com/)
+- TailwindCSS for styling
+- Eslint and Prettier for code quality
 
 ## Getting Started
 
@@ -22,6 +24,10 @@ Install the dependencies:
 ```bash
 npm install
 ```
+
+you also need .env file with the following variables:
+
+``` GITHUB_TOKEN ``` - A GitHub personal access token.
 
 ### Development
 
