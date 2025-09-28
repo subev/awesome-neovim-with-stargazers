@@ -1,6 +1,7 @@
-# Welcome to Awesome Neovim with Stargazers count!
+# Welcome to [Awesome Neovim](https://github.com/rockerBOO/awesome-neovim/) list extended with Stargazers count!
 
-<img width="1623" height="819" alt="image" src="https://github.com/user-attachments/assets/9c3bce51-654d-4b60-98a0-73d726bc945e" />
+<img width="1270" height="619" alt="image" src="https://github.com/user-attachments/assets/8fe3fd2a-3661-40b9-994a-fa94b76530ae" />
+
 
 
 ## Features
@@ -30,9 +31,13 @@ you also need .env file with the following variables:
 
 ``` GITHUB_TOKEN ``` - A GitHub personal access token.
 
+```bash
+npm run fetch-stars
+```
+
 ### Development
 
-Copy `.env.example` to `.env` and provide a `DATABASE_URL` with your connection string.
+Copy `.env.example` to `.env` and provide a GITHUB_TOKEN.
 
 Run an initial database migration:
 
