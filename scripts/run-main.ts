@@ -1,6 +1,6 @@
 import { main } from "./updateStargazers.ts";
 
-main().catch((error) => {
+main(Boolean(process.env.USE_CACHE)).catch((error) => {
   console.error(error);
   process.exit(1);
 });

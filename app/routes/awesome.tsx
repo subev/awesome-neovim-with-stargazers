@@ -6,6 +6,7 @@ import rehypeSlug from "rehype-slug";
 import rehypeExternalLinks from "rehype-external-links";
 
 export default function Awesome() {
+  
   return (
     <div className="prose prose-sm prose-a:text-blue-600 max-w-none p-5 prose-ul:marker:text-gray-500">
       <ReactMarkdown

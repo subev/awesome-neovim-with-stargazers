@@ -199,7 +199,7 @@ describe("replaceMarkdownLinksWithStars", () => {
 
     const result = replaceMarkdownLinksWithStars(markdown, cache);
 
-    expect(result).toContain("- [foo/bar](https://github.com/foo/bar) ⭐️ 42");
+    expect(result).toContain("- ⭐️ 42 [foo/bar](https://github.com/foo/bar)");
     // Uncached repo stays unchanged
     expect(result).toContain("- [baz/qux](https://github.com/baz/qux)");
   });

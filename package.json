@@ -11,7 +11,9 @@
     "typecheck": "react-router typegen && tsc -b",
     "lint": "eslint . --ext .ts,.tsx",
     "test": "vitest",
-    "fetch-stars": "node --experimental-strip-types --env-file=.env scripts/run-main.ts"
+    "fetch-stars": "node --experimental-strip-types --env-file=.env scripts/run-main.ts",
+    "cached-stars": "USE_CACHE=TRUE node --experimental-strip-types --env-file=.env scripts/run-main.ts"
+    
   },
   "dependencies": {
     "@react-router/express": "^7.7.1",

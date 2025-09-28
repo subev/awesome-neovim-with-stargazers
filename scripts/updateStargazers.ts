@@ -74,25 +74,45 @@ export const replaceMarkdownLinksWithStars = (
   cache: Map<string, RepoDetailsGithub>,
 ) => {
   const repoRegex =
-    /- \[([\w.-]+\/[\w.-]+)\]\(https:\/\/github\.com\/[^)]+\)(.*)/g;
+    /\[([^\]]+)\]\(https:\/\/github\.com\/([\w.-]+\/[\w.-]+)(?:\/[^)]*)?\)(.*)/g;
 
-  return markdown.replace(repoRegex, (match, repoSlug, rest) => {
-    const repoDetails = cache.get(repoSlug);
-    if (repoDetails) {
-      return `- [${repoSlug}](https://github.com/${repoSlug}) ⭐️ ${repoDetails.stargazers_count}${rest}`;
-    }
-    return match; // leave unchanged if not found
-  });
+  return markdown.replace(
+    repoRegex,
+    (match, linkText: string, repoSlug: string, description: string) => {
+      const repoDetails = cache.get(repoSlug);
+
+      if (repoDetails) {
+        return `⭐️ ${repoDetails.stargazers_count} [${linkText}](https://github.com/${repoSlug})${description}`;
+      }
+
+      return match; // leave unchanged if not found
+    },
+  );
 };
 
-export const main = async () => {
+export const main = async (useCache?: boolean) => {
   const markdown = await got(
     "https://raw.githubusercontent.com/rockerBOO/awesome-neovim/refs/heads/main/README.md",
   ).text();
   const repoInfos = getRepoNames(markdown);
   console.log(`Found ${repoInfos.length} repositories in markdown.`);
 
-  console.log("Fetching repository details from GitHub...");
+  if (useCache) {
+    try {
+      const cachedData = await fs.readFile("repoDetails.json", "utf-8");
+      const cachedRepos: RepoDetailsGithub[] = JSON.parse(cachedData);
+      for (const repo of cachedRepos) {
+        const cacheKey = `${repo.owner.login}/${repo.name}`;
+        reposCache.set(cacheKey, repo);
+      }
+      console.log(`Loaded ${reposCache.size} repositories from cache.`);
+    } catch {
+      console.warn("⚠️ Failed to load cache, proceeding without it.");
+    }
+  } else {
+    console.log("Fetching repository details from GitHub...");
+  }
+
   // uses p-queue to limit concurrency
   const repoDetailsList = await Promise.all(
     repoInfos.map(({ owner, repo }) =>
